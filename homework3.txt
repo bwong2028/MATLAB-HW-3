@@ -1,0 +1,122 @@
+clear
+format long
+help myPoly
+  y = <strong>myPoly</strong>(x)
+  Compute the value of "y" given "x" along a curve as defined by
+  y=(4.*(x.^3)-40.*(x.^2)+2.*(x.^1)+3000)./1000
+  x and y are doubles
+
+help myPolyLengthApproxN
+ [length] = <strong>myPolyLengthApproxN</strong> (xmin, xmax, n)
+  this function  calculates the approximate length of a curve
+  given by the interval [xmin, xmax] using n segments
+  all inputs and outputs are doubles
+
+help myPolyLengthApprox1toN
+ [vector] = myPolyLengthApproxN (xmin, xmax, nmax)
+  this function  calculates the approximate length of a curve
+  given by the interval [xmin, xmax] repeatedly using 1 to nmax segments
+  it puts all of these different values into a vector that is returned
+  all inputs and outputs are doubles
+
+help myPolyLengthApprox
+ [length] = <strong>myPolyLengthApprox</strong>(xmin,xmax,e)
+ Approximates the length of a curved line
+  from x starting at "xmin" and going to "xmax".
+ This function keeps approximating the curve length
+ until it is within an estimated error "e".
+ All inputs and outputs are doubles
+
+myPolyLengthApproxN(-20,20,1)
+
+ans =
+
+  75.539700820164754
+
+myPolyLengthApproxN(-20,20,2)
+
+ans =
+
+  77.674429129783164
+
+myPolyLengthApproxN(-20,20,3)
+
+ans =
+
+  81.848677949001726
+
+v = myPolyLengthApprox1toN(-20,20,20)
+
+v =
+
+  Columns 1 through 3
+
+  75.539700820164754  77.674429129783164  81.848677949001726
+
+  Columns 4 through 6
+
+  82.954156485724653  83.534364253926000  83.783123114117359
+
+  Columns 7 through 9
+
+  83.983683612406196  84.106784245038071  84.190300702970532
+
+  Columns 10 through 12
+
+  84.250840747768507  84.295697990104372  84.330004863671249
+
+  Columns 13 through 15
+
+  84.356688480462196  84.377897701784633  84.395030409028223
+
+  Columns 16 through 18
+
+  84.409063726758092  84.420702885358693  84.430462311855365
+
+  Columns 19 through 20
+
+  84.438726044824222  84.445784543298046
+
+plot(v)
+
+
+e = v - [ 0 v(1:length(v)-1) ]
+
+e =
+
+  Columns 1 through 3
+
+  75.539700820164754   2.134728309618410   4.174248819218562
+
+  Columns 4 through 6
+
+   1.105478536722927   0.580207768201348   0.248758860191359
+
+  Columns 7 through 9
+
+   0.200560498288837   0.123100632631875   0.083516457932461
+
+  Columns 10 through 12
+
+   0.060540044797975   0.044857242335866   0.034306873566877
+
+  Columns 13 through 15
+
+   0.026683616790947   0.021209221322437   0.017132707243590
+
+  Columns 16 through 18
+
+   0.014033317729869   0.011639158600602   0.009759426496672
+
+  Columns 19 through 20
+
+   0.008263732968857   0.007058498473825
+
+myPolyLengthApprox(-20,20,0.01)
+
+ans =
+
+  84.430462311855365
+
+%Byron Wong, bw540, 232001450
+diary off
